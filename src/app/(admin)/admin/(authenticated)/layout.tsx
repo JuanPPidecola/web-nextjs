@@ -12,7 +12,7 @@ import AsideMenu from "../../../../components/AsideMenu";
 import FooterBar from "../../../../components/FooterBar";
 import FormField from "../../../../components/Form/Field";
 import { Field, Form, Formik } from "formik";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 type Props = {
   children: ReactNode;
@@ -25,7 +25,6 @@ export default function LayoutAuthenticated({ children }: Props) {
   const router = useRouter();
 
   const pathname = usePathname();
-  const searchParams = useSearchParams();
 
   useEffect(() => {
     const handleRouteChangeStart = () => {
@@ -35,7 +34,7 @@ export default function LayoutAuthenticated({ children }: Props) {
 
     // This effect will run on route changes
     handleRouteChangeStart();
-  }, [pathname, searchParams]);
+  }, [pathname]);
 
   const layoutAsidePadding = "xl:pl-60";
 
