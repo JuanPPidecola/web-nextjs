@@ -24,7 +24,7 @@ const Buttons = ({
         noWrap ? 'flex-nowrap' : 'flex-wrap'
       }`}
     >
-      {Children.map(children, (child: ReactElement) =>
+      {Children.map(children, (child) =>
         child ? cloneElement(child, { className: `${classAddon} ${child.props.className}` }) : null
       )}
     </div>
