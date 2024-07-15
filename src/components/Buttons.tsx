@@ -25,6 +25,7 @@ const Buttons = ({
       }`}
     >
       {Children.map(children, (child) =>
+      // @ts-ignore
         child ? cloneElement(child, { className: `${classAddon} ${child.props.className}` }) : null
       )}
     </div>
