@@ -65,6 +65,7 @@ export type Client = {
   progress: number
   created: string
   created_mm_dd_yyyy: string
+  department: string
 }
 
 export type UserForm = {

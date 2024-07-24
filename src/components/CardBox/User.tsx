@@ -11,8 +11,7 @@ type Props = {
 }
 
 const CardBoxUser = ({ className }: Props) => {
-  const userName = useAppSelector((state) => state.main.userName)
-
+  const userName = "AdminPidecola"
   return (
     <CardBox className={className}>
       <div className="flex flex-col lg:flex-row items-center justify-around lg:justify-center">
@@ -31,15 +30,6 @@ const CardBoxUser = ({ className }: Props) => {
                 </FormCheckRadio>
               </Form>
             </Formik>
-          </div>
-          <h1 className="text-2xl">
-            Howdy, <b>{userName}</b>!
-          </h1>
-          <p>
-            Last login <b>12 mins ago</b> from <b>127.0.0.1</b>
-          </p>
-          <div className="flex justify-center md:block">
-            <PillTag label="Verified" color="info" icon={mdiCheckDecagram} />
           </div>
         </div>
       </div>

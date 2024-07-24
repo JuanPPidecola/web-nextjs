@@ -1,7 +1,13 @@
 "use client";
 
 import {
+  mdiFingerprint,
+  mdiRoadVariant,
+  mdiBagChecked,
   mdiAccountMultiple,
+  mdiAccountReactivate,
+  mdiSafeSquareOutline,
+  mdiInformation,
   mdiCartOutline,
   mdiChartPie,
   mdiChartTimelineVariant,
@@ -30,7 +36,7 @@ import ChartLineSample from "../../../../../components/ChartLineSample";
 import NotificationBar from "../../../../../components/NotificationBar";
 import TableSampleClients from "../../../../../components/Table/SampleClients";
 
- const DashboardPage = () => {
+const DashboardPage = () => {
   const { clients } = useSampleClients();
   const { transactions } = useSampleTransactions();
 
@@ -52,56 +58,87 @@ import TableSampleClients from "../../../../../components/Table/SampleClients";
           title="Overview"
           main
         >
-          <Button
-            href="https://github.com/justboil/admin-one-react-tailwind"
-            target="_blank"
-            icon={mdiGithub}
-            label="Star on GitHub"
-            color="contrast"
-            roundedFull
-            small
-          />
         </SectionTitleLineWithButton>
 
+        <NotificationBar color="contrast" icon={mdiInformation}>
+          <b>Los Rendimientos</b> son con respecto al mes anterior.
+        </NotificationBar>
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 mb-6">
+          <CardBoxWidget
+            trendLabel="3%"
+            trendType="up"
+            trendColor="success"
+            icon={mdiFingerprint}
+            iconColor="contrast"
+            number={512}
+            numberSuffix=" tnCO2eq"
+            label="Huella de Carbono Reducida"
+          />
+          <CardBoxWidget
+            trendLabel="16%"
+            trendType="up"
+            trendColor="success"
+            icon={mdiRoadVariant}
+            iconColor="contrast"
+            number={7770}
+            numberSuffix=" Km"
+            label="Km Recorridos"
+          />
+          <CardBoxWidget
+            trendLabel="15%"
+            trendType="up"
+            trendColor="success"
+            icon={mdiBagChecked}
+            iconColor="contrast"
+            number={2564}
+            label="Total de Viajes"
+          />
+        </div>
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 mb-6">
           <CardBoxWidget
             trendLabel="12%"
             trendType="up"
             trendColor="success"
             icon={mdiAccountMultiple}
-            iconColor="success"
-            number={512}
-            label="Clients"
+            iconColor="contrast"
+            number={14287}
+            label="Total Usuarios"
           />
           <CardBoxWidget
-            trendLabel="16%"
-            trendType="down"
-            trendColor="danger"
-            icon={mdiCartOutline}
-            iconColor="info"
+            trendLabel="10%"
+            trendType="up"
+            trendColor="success"
+            icon={mdiAccountReactivate}
+            iconColor="contrast"
             number={7770}
-            numberPrefix="$"
-            label="Sales"
+            label="Total Usuarios Activos"
           />
           <CardBoxWidget
-            trendLabel="Overflow"
-            trendType="warning"
-            trendColor="warning"
-            icon={mdiChartTimelineVariant}
-            iconColor="danger"
-            number={256}
-            numberSuffix="%"
-            label="Performance"
+            trendLabel="6%"
+            trendType="up"
+            trendColor="success"
+            icon={mdiSafeSquareOutline}
+            iconColor="contrast"
+            number={25676}
+            numberPrefix="$"
+            label="Dinero Ahorrado"
           />
         </div>
-
+        <div className="py-4">
+          <SectionTitleLineWithButton
+            icon={mdiChartTimelineVariant}
+            title="Usuarios Destacados"
+            main
+          >
+          </SectionTitleLineWithButton>
+        </div>
+        <NotificationBar color="contrast" icon={mdiInformation}>
+          <b>Los Viajes</b>  mostrados son los completados el mes anterior.
+        </NotificationBar>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
           <div className="flex flex-col justify-between">
-            {transactions.map((transaction: Transaction) => (
-              <CardBoxTransaction
-                key={transaction.id}
-                transaction={transaction}
-              />
+            {clientsListed.map((client: Client) => (
+              <CardBoxClient key={client.id} client={client} />
             ))}
           </div>
           <div className="flex flex-col justify-between">
@@ -111,23 +148,19 @@ import TableSampleClients from "../../../../../components/Table/SampleClients";
           </div>
         </div>
 
-        <div className="my-6">
-          <SectionBannerStarOnGitHub />
-        </div>
 
-        <SectionTitleLineWithButton icon={mdiChartPie} title="Trends overview">
+        <SectionTitleLineWithButton icon={mdiChartPie} title="Dinero Facturado">
           <Button icon={mdiReload} color="whiteDark" onClick={fillChartData} />
         </SectionTitleLineWithButton>
-
+        <NotificationBar color="contrast" icon={mdiInformation}>
+          <b>El Dinero Facturado</b>  se muestra en relación dinero/día de los últimos 30 días.
+        </NotificationBar>
         <CardBox className="mb-6">
           {chartData && <ChartLineSample data={chartData} />}
-        </CardBox> 
+        </CardBox>
 
         {/* <SectionTitleLineWithButton icon={mdiAccountMultiple} title="Clients" />
 
-        <NotificationBar color="info" icon={mdiMonitorCellphone}>
-          <b>Responsive table.</b> Collapses on mobile
-        </NotificationBar>
 
         <CardBox hasTable>
           <TableSampleClients />
@@ -135,6 +168,6 @@ import TableSampleClients from "../../../../../components/Table/SampleClients";
       </SectionMain>
     </>
   );
-}
+};
 
 export default DashboardPage;
