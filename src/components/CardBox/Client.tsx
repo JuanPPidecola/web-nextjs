@@ -1,4 +1,4 @@
-import { mdiTrendingDown, mdiTrendingNeutral, mdiTrendingUp } from '@mdi/js'
+import { mdiTrendingDown, mdiTrendingNeutral, mdiTrendingUp, mdiCar2Plus } from '@mdi/js'
 import React from 'react'
 import { Client } from '../../interfaces'
 import CardBox from '.'
@@ -35,12 +35,11 @@ const CardBoxClient = (props: Props) => {
           <div className="text-center md:text-left overflow-hidden">
             <h4 className="text-xl text-ellipsis">{props.client.name}</h4>
             <p className="text-gray-500 dark:text-slate-400">
-              {props.client.created} @ {props.client.login}
+              {props.client.department} @ {props.client.login}
             </p>
           </div>
         </div>
-
-        <PillTag color={pillColor()} icon={pillIcon} label={`${props.client.progress}%`} />
+        <PillTag color={'light'} icon={mdiCar2Plus} label={`${props.client.progress}`} />
       </div>
     </CardBox>
   )

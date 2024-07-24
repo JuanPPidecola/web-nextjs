@@ -5,6 +5,7 @@ import {
   mdiLock,
   mdiAlertCircle,
   mdiSquareEditOutline,
+  mdiAccountMultiple,
   mdiTable,
   mdiViewList,
   mdiTelevisionGuide,
@@ -21,56 +22,23 @@ const menuAside: MenuAsideItem[] = [
     label: 'Dashboard',
   },
   {
-    href: '/admin/tables',
-    label: 'Tables',
-    icon: mdiTable,
-  },
-  {
-    href: '/admin/forms',
-    label: 'Forms',
-    icon: mdiSquareEditOutline,
-  },
-  {
-    href: '/admin/ui',
-    label: 'UI',
-    icon: mdiTelevisionGuide,
-  },
-  {
-    href: '/admin/responsive',
-    label: 'Responsive',
-    icon: mdiResponsive,
-  },
-  {
-    href: '/',
-    label: 'Styles',
-    icon: mdiPalette,
-  },
-  {
-    href: '/profile',
-    label: 'Profile',
-    icon: mdiAccountCircle,
-  },
-  {
-    href: '/login',
-    label: 'Login',
-    icon: mdiLock,
-  },
-  {
-    href: '/error',
-    label: 'Error',
-    icon: mdiAlertCircle,
-  },
-  {
-    label: 'Dropdown',
-    icon: mdiViewList,
+    label: 'Usuarios',
+    icon: mdiAccountMultiple,
     menu: [
       {
-        label: 'Item One',
+        label: 'Crear Usuario',
+        href: '/admin/users/create',
       },
       {
-        label: 'Item Two',
+        label: 'Usuarios',
+        href: '/admin/users',
       },
     ],
+  },
+  {
+    href: '/admin/notifications',
+    label: 'Notificaciones',
+    icon: mdiSquareEditOutline,
   },
 ]
 
