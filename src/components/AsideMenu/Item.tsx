@@ -18,18 +18,6 @@ const AsideMenuItem = ({ item, isDropdownList = false }: Props) => {
 
   const activeClassAddon = !item.color && isLinkActive ? 'aside-menu-item-active font-bold' : ''
 
-  const { pathname, isReady } = useRouter()
-
-  useEffect(() => {
-    if (item.href && isReady) {
-      const linkPathName = new URL(item.href, location.href).pathname
-  
-      const activePathname = new URL(pathname, location.href).pathname
-  
-      setIsLinkActive(linkPathName === activePathname)
-    }
-  }, [item.href, isReady, pathname])  
-
   const asideMenuItemInnerContents = (
     <>
       {item.icon && (
